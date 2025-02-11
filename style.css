@@ -1,0 +1,446 @@
+@charset "UTF-8";
+
+/*全体*/
+
+.wrapper {
+    overflow: hidden;
+}
+a { /*ナビゲーションの下線消し*/
+    text-decoration:none;
+}
+/*ヘッダーの基本デザイン*/
+.hd-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 46px;
+    padding-right: 20px;
+    width: 100%; /*横幅*/
+    height: 70px; /*縦幅*/
+    background-color: #ffffff;
+    z-index: 2; /*要素の前後関係の数値、数値が大きいほど手前に来る【ポジションを設定しないと効かない】*/
+    position: fixed; /*z-indexとセット*/
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: /*水平*/0 /*垂直*/10px /*ぼかし*/10px rgba(0, 0, 0, 0.05);/*透明度*/ /* 影を追加 */
+}
+/*ロゴ*/
+.hd-logo{
+    display: block;
+}
+
+.hd-nav{
+    margin-left: auto;
+}
+/*ナビゲーション*/
+.hd-nav-list{
+    justify-content: space-between;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding-right: 20px;
+    }
+
+/*ナビゲーションアイテム*/
+.hd-nav-item{
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+
+/*ナビゲーションリンク*/
+.hd-nav-link{
+    display: flex;
+    flex-direction: column; /*縦方向*/
+    text-decoration: none;
+    color: black;
+    align-items: center
+}
+.hd-nav-text-en{
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 2px;
+}
+.hd-nav-text-ja{
+    font-size: 9px;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+/*カウンセリングボタン*/
+.hd-nav-button{
+    background-color: #f79214;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin-right: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    white-space: nowrap;
+    min-width: 150px;
+    text-align: center;
+    border-radius: 30px;
+}
+
+/* ボタンのホバーエフェクト */
+.hd-nav-button:hover {
+    opacity: 0.7;
+}
+#menu-toggle {
+    display: none; /* チェックボックスを非表示にする */
+}
+
+#menu-toggle:checked ~ .hd-nav-list{
+    display: flex;
+}
+
+/*ハンバーガーのアニメーション */
+/*input type="checkbox"が チェックされたとき（クリックされたとき、メニューが開いたとき）.hamburger全体に適用*/
+#menu-toggle:checked ~ .hamburger span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+    /*(1)=1本目の線を10px下へ、45度回転させる*/
+}
+
+#menu-toggle:checked ~ .hamburger span:nth-child(2) {
+    opacity: 0;
+    /*(2)=2本目の線をopacity透明にする*/
+}
+
+#menu-toggle:checked ~ .hamburger span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+    /*(3)=3本目の線を10px上へ、45度回転させる*/
+}
+
+
+@media only screen and (max-width: 769px){
+    /*ヘッダーのレイアウト変更 */
+    .hd-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+
+    /*当初ナビゲーション非表示 */
+    .hd-nav-list {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* メニューのアイテムを縦並び*/
+    .hd-nav-item {
+        display: block;
+        display: flex;
+        margin: 15px 0;
+    }
+
+    /*ハンバーガーメニュー（3本線ボタン） */
+    .hamburger {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 120px;
+        width: 40px;
+        height: 30px;
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    /*ハンバーガーの3本線 */
+    .hamburger span {
+        display: block;
+        width: 100%;
+        height: 5px;
+        background-color: black;
+        border-radius: 5px;
+        transition: 0.3s;
+        margin: 6px 0;
+    }
+@media only screen and (max-width: 420px){
+    /* メニューのアイテムを縦並び*/
+    .hd-nav-item {
+        display: flex;
+        margin: 15px 0;
+    }
+
+    /*ハンバーガーメニュー（3本線ボタン） */
+    .hamburger {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 80px;
+        width: 40px;
+        height: 30px;
+        cursor: pointer;
+        z-index: 1;
+    }
+    /*ハンバーガーの3本線 */
+    .hamburger span {
+        display: block;
+        width: 100%;
+        height: 5px;
+        background-color: black;
+        border-radius: 5px;
+        transition: 0.3s;
+        margin: 6px 0;
+        }
+    }
+}
+
+/*メイン*/
+
+.first-view{ /*ファーストビュー*/
+    position: relative;
+    width: auto;
+    height: 700px;
+    background-color: f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 左右に配置 */
+    overflow: hidden;
+}
+.fv-img-left-rectangle{ /*左上三角形*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 350px;
+    height: 350px;
+}
+.fv-img-right-rectangle{ /*右下三角形*/
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 350px;
+    height: 350px;
+}
+.fv-img-long-circle{ /*真ん中円柱*/
+    position: relative;
+    top: 10%;
+    left: -5%;
+}
+.fv-img-main-visual{ /*メインヴィジュアル*/
+    position: absolute;
+    top: 0;
+    right: 0px;
+    width: 770px;
+    height: auto;
+}
+.fv-img-No1{ /*No.1画像*/
+    position: relative;
+    top: -10%;
+    right: 20%;
+}
+.fv-content{ /*文字コンテンツ*/
+    position: absolute;
+    bottom: 18%;
+    left: 8%;
+}
+.fv-text{ /*文字コンテンツテキスト*/
+    font-size: 42px;
+    font-weight: 1000;
+}
+.fv-content-botton{ /*文字コンテンツボタン*/
+    background-color: #f79214;
+    color: #ffffff;
+    text-decoration: none;
+    width: 100%;
+    padding: 18px 18px;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    border-radius: 30px;
+}
+.fv-content-botton-text{ /*文字コンテンツボタンテキスト*/
+    color: #ffffff;
+    text-decoration: none;
+}
+.fv-content-text2{ /*文字コンテンツボタンテキスト2*/
+    position: absolute;
+    width: 100%;
+    font-size: 11px;
+    font-weight: normal;
+}
+
+/*タブレット*/
+@media only screen and (max-width: 767px) {
+    .first-view{
+        position: absolute;
+        width: 100%;
+        max-height: 900px;
+        z-index: 1;
+        padding: 0px 16px 16px 16px;
+    }
+    .fv-img-left-rectangle{ /*左上三角形*/
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 250px;
+    }
+    .fv-img-right-rectangle{ /*右下三角形*/
+        display: none;
+    }
+    .fv-img-long-circle{ /*真ん中円柱*/
+        display: block;
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        width: auto;
+        height: 50%;
+    }
+
+    .fv-img-main-visual{ /*メインヴィジュアル*/
+        position: absolute;
+        top: 8%;
+        right: 0%;
+        width: 70%;
+        height: auto;
+    }
+
+    .fv-img-No1{ /*No.1画像*/
+        position: relative;
+        top: 20%;
+        left: 35%;
+        width: 15%;
+        height: auto;
+        z-index: 3;
+    }
+    .fv-content{ /*文字コンテンツ*/
+        left: 2%;
+        margin: 0 0 16;
+        width: 70%;
+        top: 80%;
+    }
+
+    .fv-text{ /*文字コンテンツテキスト*/
+        font-size: 22px;
+        font-weight: 800;
+        position: absolute;
+        bottom: 20%;
+    }
+    .fv-content-botton{ /*文字コンテンツボタン*/
+        background-color: #f79214;
+        color: #ffffff;
+        width: 100%;
+        padding: 18px;
+        margin-top: 100px;
+        font-size: 16px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 16px;
+        border-radius: 30px;
+        position: absolute;
+        bottom: -90px;
+        left: 0;
+    }
+    .fv-content-botton-text{ /*文字コンテンツボタンテキスト*/
+        color: #ffffff;
+        text-decoration: none;
+    }
+    .fv-content-text2{ /*文字コンテンツボタンテキスト2*/
+        position: absolute;
+        display: block;
+        width: 800px;
+        font-size: 11px;
+        font-weight: normal;
+        bottom: -110px;
+    }
+}
+
+/*スマートフォン*/
+@media only screen and (max-width: 420px) {
+    .first-view{
+        position: absolute;
+        width: 100%;
+        max-height: 900px;
+        z-index: 1;
+        padding: 0px 16px 16px 16px;
+    }
+    .fv-img-left-rectangle{ /*左上三角形*/
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200px;
+        height: 200px;
+    }
+    .fv-img-right-rectangle{ /*右下三角形*/
+        display: none;
+    }
+    .fv-img-long-circle{ /*真ん中円柱*/
+        position: absolute;
+        top: 10%;
+        left: 5%;
+        width: auto;
+        height: 35%;
+    }
+
+    .fv-img-main-visual{ /*メインヴィジュアル*/
+        position: absolute;
+        top: 5%;
+        right: -10%;
+        width: 85%;
+        height: auto;
+    }
+
+    .fv-img-No1{ /*No.1画像*/
+        position: relative;
+        top: 5%;
+        left: 60%;
+        width: 25%;
+        height: auto;
+        z-index: 3;
+    }
+    .fv-content{ /*文字コンテンツ*/
+        left: 2%;
+        margin: 0 0 16;
+        width: 80%;
+        top: -20%;
+    }
+
+    .fv-text{ /*文字コンテンツテキスト*/
+        font-size: 22px;
+        font-weight: 800;
+        position: absolute;
+        bottom: 20%;
+    }
+    .fv-content-botton{ /*文字コンテンツボタン*/
+        background-color: #f79214;
+        color: #ffffff;
+        width: 100%;
+        padding: 18px;
+        margin-top: 100px;
+        font-size: 16px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 16px;
+        border-radius: 30px;
+        position: absolute;
+        bottom: 50px;
+        left: 0;
+    }
+    .fv-content-botton-text{ /*文字コンテンツボタンテキスト*/
+        color: #ffffff;
+        text-decoration: none;
+    }
+    .fv-content-text2{ /*文字コンテンツボタンテキスト2*/
+        position: absolute;
+        display: block;
+        width: 100%;
+        font-size: 11px;
+        font-weight: normal;
+        bottom: -20px;
+    }
+}
